@@ -1,0 +1,36 @@
+import random
+
+class TournamentBracket:
+    def __init__(self, teams):
+        self.teams = teams
+        self.matches = []
+        self.generate_bracket()
+
+    def generate_bracket(self):
+        random.shuffle(self.teams)
+        num_teams = len(self.teams)
+        num_rounds = num_teams - 1
+        matches_per_round = num_teams // 2
+
+        for round_num in range(num_rounds):
+            round_matches = []
+            for match_num in range(matches_per_round):
+                team1 = self.teams[match_num]
+                team2 = self.teams[num_teams - match_num - 1]
+                round_matches.append((team1, team2))
+            self.matches.append(round_matches)
+            self.rotate_teams()
+
+    def rotate_teams(self):
+        self.teams.insert(1, self.teams.pop())
+
+    def display_bracket(self):
+        for round_num, round_matches in enumerate(self.matches):
+            print(f"Round {round_num + 1}:")
+            for match_num, match in enumerate(round_matches):
+                print(f"\tMatch {match_num + 1}: {match[0]} vs {match[1]}")
+
+if __name__ == "__main__":
+    teams = ["Team A", "Team B", "Team C", "Team D", "Team E", "Team F", "Team G", "Team H"]
+    bracket = TournamentBracket(teams)
+    bracket.display_bracket()
