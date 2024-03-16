@@ -1,1 +1,1 @@
-app that facilitates a volleyball tournament with the specified parameters, we’ll need to design a comprehensive solution that covers various aspects of tournament organization, scheduling, and management. 
+App that facilitates creating a volleyball tournament with the specified parameters, Covers various aspects of tournament organization, scheduling, and management. 
